@@ -53,12 +53,6 @@ public class TodoItemService : ITodoItemsService
         {
             throw new Exception("User not found");
         }
-        
-        var todo = await _todoItemsRepository.Query.FirstOrDefaultAsync();
-        if (todo is null)
-        {
-            throw new Exception("Not found any todo");
-        }
 
         var list = await _todoItemsRepository.Query
             .Where(x => x.UserId == user.Id && x.CompletedDate != null)
